@@ -1,7 +1,6 @@
 import { auth } from "./config.js";
 import { signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
-
 let email = document.getElementById("emaill");
 let password = document.getElementById("passwordd");
 let button = document.getElementById("login");
@@ -18,6 +17,7 @@ button.addEventListener("click", async () => {
             const user = userCredential.user;
             // ...
             //   console.log(user);
+            checkUserLoc();
             window.location = "./quiz.html";
         })
         .catch((error) => {
@@ -37,20 +37,54 @@ button.addEventListener("click", async () => {
 
 
 forgot.addEventListener("click", () => {
+    div.style.visibility = "hidden";
+    loader.style.display = "block";
     sendPasswordResetEmail(auth, email.value)
-      .then(() => {
-        // Password reset email sent!
-        // ..
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        heading02.style.padding = "1rem";
-        heading02.innerHTML = "PLEASE ENTER EMAIL / EMAIL IS NOT REGISTERED";
-        setTimeout(() => {
-            heading02.style.padding = "0rem";
-            heading02.innerHTML = "";
-        }, 2000)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+            heading02.style.padding = "1rem";
+            heading02.style.backgroundColor = "#10266b";
+            heading02.innerHTML = "EMAIL VERIFICATION SEND";
+
+            setTimeout(() => {
+                heading02.style.padding = "0rem";
+                heading02.innerHTML = "";
+            }, 2000)
+
+            div.style.visibility = "visible";
+            loader.style.display = "none";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            heading02.style.padding = "1rem";
+            heading02.innerHTML = "PLEASE ENTER EMAIL / EMAIL IS NOT REGISTERED";
+            setTimeout(() => {
+                heading02.style.padding = "0rem";
+                heading02.innerHTML = "";
+            }, 2000)
+        });
+})
+
+
+
+
+
+
+
+
+function checkUserLoc(){
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          console.log(user);
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
       });
-  })
+}

@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #e9ecef;
+}
+.container{
+    background-color: #e9ecef;
+}
+html{
+    font-size: 62.5%;
+}
+.nav-bar{
+    background-color: #10266b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#logo{
+    width: 10rem;
+    background-color: #10266b;
+}
+.nav-bar>h1 {
+    color: #ffff;
+    font-size: 3rem;
+    padding-right: 2rem;
+    background-color: #10266b;
+    text-decoration: none;
+}
+
+.html>h1 , .css>h1 , .js>h1{
+    background-color: #ffff;
+    width: 80%;
+    height: 1rem;
+    font-size: 4rem;
+    padding: 3rem;
+}
+.html>h1>a , .css>h1>a , .js>h1>a{
+    text-decoration: none;
+    color: #10266b;
+    background-color: #ffff;
+    position: relative;
+    bottom: 2rem;
+}
+.html , .css , .js{
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+.quiz-selection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10%;
+}
