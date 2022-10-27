@@ -32,6 +32,7 @@ function checkUserLoc() {
 checkUserLoc()
 // console.log(auth);
 function getdocument(user) {
+    console.log(user);
     let userDetail = collection(db, "UserDetail");
     // console.log(user.auth.currentUser.uid);
     const q = query(userDetail, where("UID", "==", auth.currentUser.uid));

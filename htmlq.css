@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #e9ecef;
+}
+.container{
+    background-color: #e9ecef;
+}
+html{
+    font-size: 45%;
+}
+.nav-bar{
+    background-color: #10266b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#logo{
+    width: 13rem;
+    background-color: #10266b;
+}
+.nav-bar>h1 {
+    color: #ffff;
+    font-size: 4rem;
+    padding-right: 2rem;
+    /* padding: 1rem; */
+    background-color: #10266b;
+    text-decoration: none;
+}
+.nav-bar>h1:hover{
+    font-weight: 1000;
+}
+.questions{
+    display: flex;
+    justify-content:center ;
+    margin-top: 6%;
+}
+.masla{
+    font-size: 5rem;
+    background-color: #ffff;
+    width: 80%;
+    padding: 5rem;
+    text-align: start;
+}
+.masla>label{
+    padding-bottom: 5rem;
+    background-color: #ffff;
+}
+.masla>input{
+    width: 5rem;
+    height: 2em;
+}
+.masla>p{
+    background-color: #ffff;
+}
+button{
+    font-size: 3rem;
+    width: 13rem;
+    height: 5rem;
+    font-weight: 600;
+}
+button:hover{
+    background-color: #10266b;
+    color: #ffff;
+}
+.button{
+    background-color: #ffff;
+    display: flex;
+    justify-content: start;
+}
+@media(max-width:1252px){
+    html{
+        font-size: 60%;
+    }
+    .nav-bar>h1{
+        font-size: 3rem;
+    }
+}
+@media(max-width:1205px){
+    html{
+        font-size: 55%;
+    }
+    .nav-bar>h1{
+        font-size: 3rem;
+    }
+}
+@media(max-width:877px){
+    html{
+        font-size: 40%;
+    }
+    .nav-bar>h1{
+        font-size: 3rem;
+    }
+    .questions{
+        margin-top: 20%;
+    }
+}
+@media(max-width:655px){
+    html{
+        font-size: 32%;
+    }
+    .nav-bar>h1{
+        font-size: 4rem;
+    }
+    .questions{
+        margin-top: 30%;
+    }
+}
+@media(max-width:521px){
+    html{
+        font-size: 25%;
+    }
+    .nav-bar>h1{
+        font-size: 4rem;
+    }
+    .questions{
+        margin-top: 40%;
+    }
+}
+@media(max-width:301px){
+    html{
+        font-size: 20%;
+    }
+    .nav-bar>h1{
+        font-size: 4rem;
+    }
+    .questions{
+        margin-top: 60%;
+    }
+}

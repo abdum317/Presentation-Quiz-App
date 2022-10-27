@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300&family=Open+Sans&family=Poppins:wght@300;600&family=Roboto:wght@400;700;900&family=Rubik+Glitch&family=Rubik+Wet+Paint&display=swap"
+        rel="stylesheet">
+    <title>Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #e9ecef;
+        }
+
+        .container {
+            background-color: #e9ecef;
+
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        .nav-bar {
+            background-color: #10266b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logo {
+            width: 10rem;
+            background-color: #10266b;
+        }
+
+        #signout {
+            font-size: 3rem;
+        }
+
+        .nav-bar>a {
+            color: #ffff;
+            text-decoration: none;
+            font-size: 4rem;
+            padding-right: 2rem;
+            background-color: #10266b;
+        }
+
+        .nav-bar>a:hover {
+            font-weight: 1000;
+        }
+
+        .result>h2 {
+            font-size: 6rem;
+            color: black;
+            background-color: #ffff;
+        }
+
+        .result>h3 {
+            font-size: 5rem;
+            text-align: center;
+            color: #10266b;
+            font-weight: bolder;
+            padding: 5rem;
+            background-color: #ffff;
+        }
+
+        .result {
+            background-color: #ffff;
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 10rem;
+        }
+
+        .divresult {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+        }
+
+        @media(max-width:1353px) {
+            html {
+                font-size: 55%;
+            }
+
+            .nav-bar>a {
+                font-size: 4rem;
+            }
+        }
+
+        @media(max-width:1055px) {
+            html {
+                font-size: 40%;
+            }
+
+            .nav-bar>a {
+                font-size: 4rem;
+            }
+
+            .divresult {
+                margin-top: 20%;
+            }
+        }
+
+        @media(max-width:655px) {
+            html {
+                font-size: 30%;
+            }
+
+            .nav-bar>a {
+                font-size: 4rem;
+            }
+
+            .divresult {
+                margin-top: 35%;
+            }
+        }
+
+        @media(max-width:445px) {
+            html {
+                font-size: 25%;
+            }
+
+            .nav-bar>a {
+                font-size: 4rem;
+            }
+
+            .divresult {
+                margin-top: 55%;
+            }
+        }
+
+        @media(max-width:363px) {
+            html {
+                font-size: 20%;
+            }
+
+            .nav-bar>a {
+                font-size: 4rem;
+            }
+
+            .divresult {
+                margin-top: 65%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <img src="images/logog.png" alt="logo-image" id="logo">
+            <a id="signout" href="index.html">SIGNOUT</a>
+        </div>
+        <div class="divresult">
+            <div class="result">
+                <h2>Result</h2>
+                <h3 id="result">Congratulation you got 50%</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module">
+
+
+
+
+        import { auth, db } from "./config.js";
+        import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+        import { collection, addDoc, Timestamp, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+
+
+
+
+        var headRes = document.querySelector("#result")
+        var totalQuestions = localStorage.getItem("total-Question");
+        var score = localStorage.getItem("score");
+        let signout = document.getElementById("signout");
+
+
+
+
+        signout.addEventListener("click", () => {
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                // alert("Sign-out successful.");
+                window.location = "./index.html";
+            }).catch((error) => {
+                // An error happened.
+
+            });
+        })
+
+
+
+
+        var percentage = score / totalQuestions * 100;
+
+        if (percentage <= 50) {
+            headRes.innerHTML = "Sorry you got " + percentage + "% and you are not selected"
+        }
+        else if (percentage < 70) {
+            headRes.innerHTML = "You got " + percentage + "% you are promoted";
+        }
+        else if (percentage > 70) {
+            headRes.innerHTML = "Congratulations you got " + percentage + "%";
+        }
+
+
+
+        function addResult(user){
+            console.log(user);
+            let subject = localStorage.getItem("Subject");
+            let result = collection(db , "result");
+            addDoc(result , {
+                name : user.FirstName,
+                email : user.email,
+                percentage:percentage,
+                uid: user.UID,
+                subject:subject,
+                resultDate: Timestamp.fromDate(new Date())
+            })
+
+        }
+
+
+        function checkUserLoc() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in, see docs for a list of available properties
+                    // https://firebase.google.com/docs/reference/js/firebase.User
+                    const uid = user.uid;
+                    // getdocument(user);
+
+
+                    let userDetail = collection(db, "UserDetail");
+                    const q = query(userDetail, where("UID", "==", auth.currentUser.uid));
+                    getDocs(q)
+                        .then((items) => {
+                            items.docs.forEach(doc => {
+                                // console.log(doc.data());
+                                addResult(doc.data());
+                            });
+                        })
+                    // ...
+                } else {
+                    // User is signed out
+                    // ...
+                    signOut(auth).then(() => {
+                        // Sign-out successful.
+                        // alert("Sign-out successful.");
+                        window.location = "./index.html";
+                    }).catch((error) => {
+                        // An error happened.
+
+                    });
+                }
+            });
+        }
+        checkUserLoc()
+    </script>
+</body>
+
+</html>
