@@ -40,9 +40,14 @@ function getdocument(user) {
         .then((items) => {
             items.docs.forEach(doc => {
                 // console.log(doc.data());
-                h1.innerHTML = doc.data().FirstName
+                h1.innerHTML = doc.data().FirstName.toUpperCase();
             });
         })
 }
 
 
+
+let result = document.getElementById("result");
+result.addEventListener("click" , ()=>{
+    window.location = "./allresult.html"
+})

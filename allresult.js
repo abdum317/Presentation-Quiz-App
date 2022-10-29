@@ -39,33 +39,54 @@ checkUserLoc()
 
 
 
+// let table = document.querySelector(".table");
+// let tableRow = document.getElementById("tr");
+let div = document.querySelector(".table");
+let tables = document.getElementById("table");
+let loading = document.querySelector(".gif");
+let signOuts = document.getElementById("head");
+
+
+signOuts.addEventListener("click" , ()=>{
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        // alert("Sign-out successful.");
+        window.location = "./index.html";
+    }).catch((error) => {
+        // An error happened.
+        
+    });
+    window.location = ("./index.html");
+})
 
 
 
-let div = document.querySelector(".allresult");
-let names = document.getElementById("names");
-let subject = document.querySelector("#subject");
 
 
-
-
-
-function getResult(user){
+function getResult(user) {
     let result = collection(db, "result");
-const q = query(result, where("uid", "==", user.auth.currentUser.uid));
-getDocs(q)
-    .then((items) => {
-        items.docs.forEach(doc => {
-            console.log(doc.data().subject);
-            names.textContent = doc.data().name;
-            subject.textContent = doc.data().subject
-        });
-    })
+    const q = query(result, where("uid", "==", user.auth.currentUser.uid));
+    getDocs(q)
+        .then((items) => {
+            items.docs.forEach(doc => {
+                // console.log(doc.data());
+                loading.style.display = "none"
+                // names.textContent = doc.data().name;
+                // subject.textContent = doc.data().subject
+                div.style.visibility =  "visible";
+
+                tables.innerHTML = tables.innerHTML+ 
+            `<tr>
+            <td>Web Development</td>
+            <td>${doc.data().subject}</td>
+            <td>${doc.data().percentage}%</td>
+            </tr>` 
+            });
+        })
 }
 
 
 
-names.value = "abdullah"
 
 
 
@@ -76,11 +97,8 @@ names.value = "abdullah"
 
 
 
+// let circle = document.querySelector(".circle");
+// let percentage = document.querySelector(".percentage").textContent = "30%";
+// console.log(percentage);
 
-
-
-let circle = document.querySelector(".circle");
-let percentage = document.querySelector(".percentage").textContent = "30%";
-console.log(percentage);
-
-circle.setAttribute("stroke-dasharray", "30,100");
+// circle.setAttribute("stroke-dasharray", "30,100");

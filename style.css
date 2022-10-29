@@ -36,7 +36,7 @@ h2{
     text-decoration: none;
 }
 .nav-bar>a:hover{
-    font-weight: 1000;
+    font-weight: bold
 }
 .nav-bar{
     background-color: #10266b;

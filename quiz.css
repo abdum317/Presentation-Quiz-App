@@ -23,7 +23,7 @@ html{
 }
 .nav-bar>h1 {
     color: #ffff;
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding-right: 2rem;
     background-color: #10266b;
     text-decoration: none;
@@ -54,6 +54,19 @@ html{
     flex-direction: column;
     justify-content: center;
     margin-top: 10%;
+}
+button{
+    width: 15rem;
+    padding: 1.5rem;
+    font-size: 2rem;
+    background-color: #10266b;
+    color: #e9ecef;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+button:hover{
+    background-color: #081b55;
 }
 #gif{
     width: 5rem;

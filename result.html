@@ -89,6 +89,21 @@
             margin-top: 10%;
         }
 
+        button {
+            width: 20rem;
+            padding: 1.5rem;
+            font-size: 2rem;
+            background-color: #10266b;
+            color: #e9ecef;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #081b55;
+        }
+
         @media(max-width:1353px) {
             html {
                 font-size: 55%;
@@ -167,6 +182,7 @@
             <div class="result">
                 <h2>Result</h2>
                 <h3 id="result">Congratulation you got 50%</h3>
+                <center><button id="results">ALL RESULTS</button></center>
             </div>
         </div>
     </div>
@@ -176,6 +192,10 @@
     <script type="module">
 
 
+        let results = document.getElementById("results");
+        results.addEventListener("click", () => {
+            window.location = "./allresult.html"
+        })
 
 
         import { auth, db } from "./config.js";
@@ -209,6 +229,21 @@
 
         var percentage = score / totalQuestions * 100;
 
+        function addResult(user) {
+            console.log(user);
+            let subject = localStorage.getItem("Subject");
+            let result = collection(db, "result");
+            addDoc(result, {
+                name: user.FirstName,
+                email: user.email,
+                percentage: percentage,
+                uid: user.UID,
+                subject: subject,
+                resultDate: Timestamp.fromDate(new Date())
+            })
+
+        }
+
         if (percentage <= 50) {
             headRes.innerHTML = "Sorry you got " + percentage + "% and you are not selected"
         }
@@ -221,20 +256,7 @@
 
 
 
-        function addResult(user){
-            console.log(user);
-            let subject = localStorage.getItem("Subject");
-            let result = collection(db , "result");
-            addDoc(result , {
-                name : user.FirstName,
-                email : user.email,
-                percentage:percentage,
-                uid: user.UID,
-                subject:subject,
-                resultDate: Timestamp.fromDate(new Date())
-            })
 
-        }
 
 
         function checkUserLoc() {
@@ -271,6 +293,9 @@
             });
         }
         checkUserLoc()
+
+
+
     </script>
 </body>
 

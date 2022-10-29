@@ -28,44 +28,32 @@ html{
     background-color: #10266b;
     text-decoration: none;
 }
+.table{
 
-.html>h1 , .css>h1 , .js>h1{
-    background-color: #ffff;
-    width: 80%;
-    height: 1rem;
-    font-size: 4rem;
-    padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  visibility: hidden;
 }
-.html>h1>a , .css>h1>a , .js>h1>a{
-    text-decoration: none;
-    color: #10266b;
-    background-color: #ffff;
-    position: relative;
-    bottom: 2rem;
+table{
+  border: 1px solid #b6b6b6;
+  font-size: 2rem;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
-.html , .css , .js{
-    display: flex;
-    justify-content:  center;
-    align-items: center;
-    margin-bottom: 5rem;
+th{
+  padding: 2rem 8rem 2rem 8rem;
 }
-.quiz-selection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 10%;
+td{
+  padding: 2rem 8rem 2rem 8rem;
 }
-#gif{
-    width: 5rem;
+#head{
+  cursor: pointer;
 }
-.result{
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 2rem;
-    padding: 2rem;
-}
-.allresult{
-    padding-top: 10rem;
+.gif{
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
 }
 
 
@@ -141,14 +129,7 @@ html{
 
 
 
-
-
-
-
-
-
-
-.flex-wrapper {
+/* .flex-wrapper {
     display: flex;
     flex-flow: row nowrap;
   }
@@ -197,4 +178,7 @@ html{
     font-family: sans-serif;
     font-size: 1rem;
     text-anchor: middle;
-  }
+  } */
+
+
+
