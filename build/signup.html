@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300&family=Open+Sans&family=Poppins:wght@300;600&family=Roboto:wght@400;700;900&family=Rubik+Glitch&family=Rubik+Wet+Paint&display=swap"
+        rel="stylesheet">
+    <title>Welcome to Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <img src="images/logog.png" alt="logo-image" id="logo">
+            <a id="singup" href="index.html">LOGIN</a>
+        </div>
+        <div class="h2">
+            <h2 id="h2"></h2>
+        </div>
+        <div class="sign-in">
+
+            <form action="app.js">
+                <label> First Name <br>
+                    <input id="firstname" type="text" name="first-name" placeholder="Enter your first name" required>
+                </label> <br>
+                <label>Last Name <br>
+                    <input id="lastname" type="text" name="last-name" placeholder="Enter your last name">
+                </label>
+                <label> Email-Address <br>
+                    <input id="email" type="email" name="email" placeholder="Enter your email">
+                </label> <br>
+                <label>Password <br>
+                    <input id="password" type="password" name="password" placeholder="Enter Password">
+                </label>
+                <img id="loader" src="images/Spinner-1s-200px.svg" alt="">
+            </form>
+            <div class="button">
+                <button id="login">SIGN UP</button>
+                <a href="index.html">Already have an account login!!</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="signup.js"></script>
+</body>
+
+</html>

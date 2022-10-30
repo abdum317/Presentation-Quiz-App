@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #e9ecef;
+}
+.container{
+    background-color: #e9ecef;
+
+}
+html{
+    font-size: 62.5%;
+}
+h2{
+    background-color: rgb(255, 58, 58);
+    color: #ffff;
+    font-size: 2rem;
+    text-align: center;
+    width: 25%;
+}
+
+.h2{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 5rem;
+    padding-bottom: rem;
+}
+
+.nav-bar>a {
+    color: #ffff;
+    font-size: 4rem;
+    padding-right: 2rem;
+    background-color: #10266b;
+    text-decoration: none;
+}
+.nav-bar>a:hover{
+    font-weight: bold
+}
+.nav-bar{
+    background-color: #10266b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#singup{
+    font-size: 2.5rem;
+    padding: 2rem;
+}
+#logo{
+    width: 10rem;
+    background-color: #10266b;
+}
+.nav-bar>H1{
+    color: #ffff;
+    font-size: 4rem;
+    padding-right: 2rem;
+    background-color: #10266b;
+}
+form>label{
+    font-size: 2rem;
+    margin-bottom: 2rem;   
+}
+input{
+    width: 30rem;
+    height: 4rem;
+    font-size: 1.7rem;
+    padding-left: 1rem;
+}
+::-webkit-input-placeholder{
+    font-size: 1.7rem;
+    padding-left: 0.3rem;
+}
+#login{
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 1rem;
+    width: 12rem;
+    border: 1px solid black;
+}
+#loader{
+    position: relative;
+    display: none;
+    width: 10rem;
+}
+.button{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+}
+#forgot{
+    font-size: 1.8rem;
+    padding-top: 2.5rem;
+    cursor: pointer;
+}
+#login:hover{
+    color: #ffff;
+    background-color: #10266b;
+}
+.button>a{
+    font-size: 1.8rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: black;
+    padding: 2rem;
+}
+#forgot:hover{
+    color: #10266b;
+}
+.button>a:hover{
+    color: #10266b;
+}
+@media(max-width:983px){
+    html{
+        font-size: 50%;
+    }
+}
+@media(max-width:445px){
+    html{
+        font-size: 40%;
+    }
+    .nav-bar>a{
+        font-size: 3rem;
+    }
+}
+@media(max-width:227px){
+    html{
+        font-size: 35%;
+    }
+    .nav-bar>a{
+        font-size: 2rem;
+    }
+}
